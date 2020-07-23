@@ -1,8 +1,8 @@
 pipeline {
   agent none
-   stages {
+  stages {
      stage('build')
-           steps   { 
+         steps{ 
              sh label: '', script: '''rm -rf dockerimg
              docker build -t webimage:v1 .'''
 
@@ -10,7 +10,7 @@ pipeline {
             
     
      stage('test'){
-           steps {
+         steps {
              echo 'this is test part'
             
            }
