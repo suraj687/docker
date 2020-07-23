@@ -1,9 +1,9 @@
 pipeline {
-  agent any
+  agent server
    stages {
    stage('build') {
            steps   { 
-              docker build -t web:v1 .
+              echo 'hii'
              }
             } 
    stage('test') {
