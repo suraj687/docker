@@ -1,11 +1,9 @@
 pipeline {
-  agent { 
-    label 'server' 
-  }
+  agent { label 'server' }
    stages {
-   stage('build') {
+   stage('build') 
            steps   { 
-              echo 'hii'
+             docker build -t web:v1 .
              }
             } 
    stage('test') {
