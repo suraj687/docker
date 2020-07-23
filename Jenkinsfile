@@ -1,0 +1,17 @@
+pipeline {
+ agent server
+ 
+ stages {
+      stage("build") {
+           steps { 
+              echo 'this is the build part'
+             }
+          } 
+      stage("test") {
+           steps {
+             echo echo 'this is test part'
+            }
+           } 
+           
+         }
+      }
