@@ -5,7 +5,7 @@ pipeline {
         agent any
         steps{ 
              sh label: '', script: '''rm -rf dockerimg
-             docker build -t webimage:v1 .'''
+             sudo docker build -t webimage:v1 .'''
       }
      }  
     stage('test'){
