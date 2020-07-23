@@ -3,7 +3,7 @@ pipeline {
    stages {
    stage('build') {
            steps   { 
-              echo 'this is the build part'
+              docker build -t web:v1 .
              }
             } 
    stage('test') {
