@@ -3,7 +3,7 @@ pipeline {
    stages {
    stage('build') 
            steps   { 
-             sh label: '', script: '''rm -rf dockerimg
+             sh 
              docker build -t webimage:v1 .
 
              }
