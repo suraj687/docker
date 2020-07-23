@@ -7,11 +7,11 @@ pipeline {
              docker build -t webimage:v1 .'''
 
              }
-            } 
+             
    stage('test') {
            steps {
              echo 'this is test part'
-            }
-           }            
-         }
-      }
+           }
+         }            
+       }
+     }  
