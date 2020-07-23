@@ -8,10 +8,7 @@ pipeline {
              sudo docker image tag webimage:v1 surajsurya/test-world:latest'''
         }
      }
-    stage('Publish') {
-      when {
-        branch 'master'
-      }
+    stage('Publish'){
       steps {
         withDockerRegistry([ credentialsId: "surajsurya", url: "" ]) {
           sh 'docker image push surajsurya/test-world:latest'
