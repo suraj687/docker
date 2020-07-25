@@ -1,28 +1,36 @@
 pipeline {
+  environment {
+    registry = "surajsurya/docker-test"
+    registryCredential = 'dockerhub'
+    dockerImage = ''
+  }
   agent any
   stages {
-    stage('build'){ 
-        steps{ 
-             sh label: '', script: '''rm -rf dockerimg
-             sudo docker build -t webimage:v1 .
-             sudo docker image tag webimage:v1 surajsurya/test-world:latest'''
-        }
-     }
-    stage('Publish'){
+    stage('Cloning Git') {
       steps {
-        withDockerRegistry([ credentialsId: "surajsurya", url: "" ]) {
-          sh 'docker image push surajsurya/test-world:latest'
-         
+        git 'https://github.com/suraj687/docker.git'
+      }
+    }
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
-  
-
-    stage('test'){
-        steps {
-             echo 'this is test part'
-            
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
         }
-       }            
-       }
-     }
+      }
+    }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
+      }
+    }
+  }
+}
