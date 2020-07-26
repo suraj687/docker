@@ -20,7 +20,7 @@ pipeline {
     }
     stage('configure the image') {
       steps{
-        sh "docker run -dit -p 3333:80 web/surya"
+        sh "docker run -dit -p 33:80 web/surya"
       }
     }
     stage('Deploy Image') {
