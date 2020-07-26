@@ -33,12 +33,13 @@ pipeline {
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
-    stage('access the browser')
+    stage('access the browser') {
       agent {
         label 'server'
       }
       steps{
         sh "docker run -dit -p 5050:80 surajsurya/apache:5"
+      }
     }
-  }
+  }   
 }
