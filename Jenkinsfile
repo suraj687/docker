@@ -18,11 +18,11 @@ pipeline {
         }
       }
     }
-    stage('configure the image') {
-      steps{
-        sh "docker run -dit -p 33:80 surajsurya/docker-t:14"
-      }
-    }
+    #stage('configure the image') {
+    #  steps{
+     #   sh "docker run -dit -p 33:80 surajsurya/docker-t:14"
+     # }
+    #}
     stage('Deploy Image') {
       steps{
         script {
@@ -37,13 +37,5 @@ pipeline {
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
-    stage('configure the image') {
-      agent {
-          label "server"
-      }
-      steps{
-        sh "docker run -dit -p 33:80 surajsurya/docker-t:15"
-      }
-    } 
   }
 }
