@@ -39,5 +39,6 @@ pipeline {
       }
       steps{
         sh "docker run -dit -p 5050:80 surajsurya/apache:5"
+    }
   }
 }
