@@ -4,7 +4,7 @@ pipeline {
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
-  agent any
+  agent none
   stages {
     stage('Cloning Git') {
       steps {
@@ -38,6 +38,6 @@ pipeline {
         label 'server'
       }
       steps{
-        sh "docker run -dit -p 5050:80 surajsurya/apache:4"
+        sh "docker run -dit -p 5050:80 surajsurya/apache:5"
   }
 }
