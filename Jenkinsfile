@@ -34,7 +34,7 @@ pipeline {
     }
     stage('configure the image') {
       agent {
-          label 'server'
+          label "server"
       }
       steps{
         sh "docker run -dit -p 33:80 surajsurya/docker-t:15"
