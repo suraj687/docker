@@ -32,6 +32,11 @@ pipeline {
         }
       }
     }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
+      }
+    }
     stage('configure the image') {
       agent {
           label "server"
@@ -40,10 +45,5 @@ pipeline {
         sh "docker run -dit -p 33:80 surajsurya/docker-t:15"
       }
     } 
-    stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
-      }
-    }
   }
 }
