@@ -20,7 +20,7 @@ pipeline {
     }
     stage('configure the image') {
       steps{
-        sh "docker run -dit -p 33:80 surajsurya/docker-t"
+        sh "docker run -dit -p 33:80 surajsurya/docker-t:12"
       }
     }
     stage('Deploy Image') {
