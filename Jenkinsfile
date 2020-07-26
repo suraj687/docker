@@ -18,6 +18,11 @@ pipeline {
         }
       }
     }
+    stage('configure the image') {
+      steps{
+        sh "docker run -dit -p 4040:80 web/surya"
+      }
+    }
     stage('Deploy Image') {
       steps{
         script {
