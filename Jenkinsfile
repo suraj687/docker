@@ -38,6 +38,6 @@ pipeline {
         label 'server'
       }
       steps{
-        sh "docker run -dit -p 5050:80 surajsurya/apache
+        sh "docker run -dit -p 5050:80 surajsurya/apache:4"
   }
 }
