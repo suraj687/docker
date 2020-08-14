@@ -35,10 +35,10 @@ pipeline {
     }
     stage('access the browser') {
       agent {
-        label 'server'
+        label 'master'
       }
       steps{
-        sh "docker run -dit -p 5050:80 surajsurya/apache:11"
+        sh "docker run -dit -p 5050:80 surajsurya/apache:1"
       }
     }
   }   
